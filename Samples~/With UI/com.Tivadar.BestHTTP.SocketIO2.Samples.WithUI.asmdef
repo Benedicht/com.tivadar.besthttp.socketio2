@@ -1,0 +1,17 @@
+{
+    "name": "com.Tivadar.BestHTTP.SocketIO2.Samples.WithUI",
+    "rootNamespace": "BestHTTP.Examples",
+    "references": [
+        "GUID:9069ac25d95ca17448a247f3bb1c769f",
+        "GUID:b00e1e22ba444834da03469b6664cc11"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
