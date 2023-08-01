@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -71,7 +72,7 @@ namespace BestHTTP.SocketIO.Transports
             request.DisableCache = true;
 #endif
 
-            request.MaxRetries = 0;
+            request.Retry.MaxRetries = 0;
 
             if (this.Manager.Options.HTTPRequestCustomizationCallback != null)
                 this.Manager.Options.HTTPRequestCustomizationCallback(this.Manager, request);
@@ -185,7 +186,7 @@ namespace BestHTTP.SocketIO.Transports
             }
 
             var str = sendBuilder.ToString();
-            request.RawData = System.Text.Encoding.UTF8.GetBytes(str);
+            request.Upload.UploadStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(str));
             request.SetHeader("Content-Type", "text/plain; charset=UTF-8");
         }
 
@@ -215,7 +216,7 @@ namespace BestHTTP.SocketIO.Transports
             }
 
             request.SetHeader("Content-Type", "application/octet-stream");
-            request.RawData = buffer;
+            request.Upload.UploadStream = new MemoryStream(buffer);
         }
 
         private void OnRequestFinished(HTTPRequest req, HTTPResponse resp)
@@ -298,7 +299,7 @@ namespace BestHTTP.SocketIO.Transports
             PollRequest.DisableCache = true;
 #endif
 
-            PollRequest.MaxRetries = 0;
+            PollRequest.Retry.MaxRetries = 0;
 
             if (this.Manager.Options.HTTPRequestCustomizationCallback != null)
                 this.Manager.Options.HTTPRequestCustomizationCallback(this.Manager, PollRequest);
