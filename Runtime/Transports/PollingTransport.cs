@@ -229,7 +229,7 @@ namespace BestHTTP.SocketIO.Transports
             {
                 // The request finished without any problem.
                 case HTTPRequestStates.Finished:
-                    if (HTTPManager.Logger.Level <= BestHTTP.Logger.Loglevels.All)
+                    if (HTTPManager.Logger.IsDiagnostic)
                         HTTPManager.Logger.Verbose("PollingTransport", "OnRequestFinished: " + resp.DataAsText);
 
                     if (resp.IsSuccess)
@@ -316,7 +316,7 @@ namespace BestHTTP.SocketIO.Transports
                 // The request finished without any problem.
                 case HTTPRequestStates.Finished:
 
-                    if (HTTPManager.Logger.Level <= BestHTTP.Logger.Loglevels.All)
+                    if (HTTPManager.Logger.IsDiagnostic)
                         HTTPManager.Logger.Verbose("PollingTransport", "OnPollRequestFinished: " + resp.DataAsText);
 
                     if (resp.IsSuccess)

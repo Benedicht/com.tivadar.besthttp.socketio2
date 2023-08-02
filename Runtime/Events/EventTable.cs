@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+using BestHTTP.Shared.Logger;
+
 namespace BestHTTP.SocketIO.Events
 {
     /// <summary>
@@ -76,7 +78,7 @@ namespace BestHTTP.SocketIO.Events
 
             if (Table.TryGetValue(eventName, out events))
             {
-                if (HTTPManager.Logger.Level <= BestHTTP.Logger.Loglevels.All)
+                if (HTTPManager.Logger.IsDiagnostic)
                     HTTPManager.Logger.Verbose("EventTable", string.Format("Call - {0} ({1})", eventName, events.Count));
 
                 for (int i = 0; i < events.Count; ++i)
@@ -84,7 +86,7 @@ namespace BestHTTP.SocketIO.Events
             }
             else
             {
-                if (HTTPManager.Logger.Level <= BestHTTP.Logger.Loglevels.All)
+                if (HTTPManager.Logger.IsDiagnostic)
                     HTTPManager.Logger.Verbose("EventTable", string.Format("Call - {0} (0)", eventName));
             }
         }

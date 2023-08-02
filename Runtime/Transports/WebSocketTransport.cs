@@ -5,6 +5,7 @@ namespace BestHTTP.SocketIO.Transports
 {
     using BestHTTP.HTTP;
     using BestHTTP.HTTP.Connections;
+    using BestHTTP.Shared.Logger;
     using BestHTTP.WebSocket;
     using Extensions;
 
@@ -126,7 +127,7 @@ namespace BestHTTP.SocketIO.Transports
             if (ws != Implementation)
                 return;
 
-            if (HTTPManager.Logger.Level <= BestHTTP.Logger.Loglevels.All)
+            if (HTTPManager.Logger.IsDiagnostic)
                 HTTPManager.Logger.Verbose("WebSocketTransport", "OnMessage: " + message);
 
             Packet packet = null;
@@ -167,7 +168,7 @@ namespace BestHTTP.SocketIO.Transports
             if (ws != Implementation)
                 return;
 
-            if (HTTPManager.Logger.Level <= BestHTTP.Logger.Loglevels.All)
+            if (HTTPManager.Logger.IsDiagnostic)
                 HTTPManager.Logger.Verbose("WebSocketTransport", "OnBinary");
 
             if (PacketWithAttachment != null)
@@ -295,7 +296,7 @@ namespace BestHTTP.SocketIO.Transports
 
             string encoded = packet.Encode();
 
-            if (HTTPManager.Logger.Level <= BestHTTP.Logger.Loglevels.All)
+            if (HTTPManager.Logger.IsDiagnostic)
                 HTTPManager.Logger.Verbose("WebSocketTransport", "Send: " + encoded);
 
             if (packet.AttachmentCount != 0 || (packet.Attachments != null && packet.Attachments.Count != 0))
