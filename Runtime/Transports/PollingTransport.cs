@@ -67,10 +67,8 @@ namespace BestHTTP.SocketIO.Transports
                                                                         sendAdditionalQueryParams ? Manager.Options.BuildQueryParams() : string.Empty)),
                                                 OnRequestFinished);
 
-#if !BESTHTTP_DISABLE_CACHING
             // Don't even try to cache it
-            request.DisableCache = true;
-#endif
+            request.Download.DisableCache = true;
 
             request.Retry.MaxRetries = 0;
 
@@ -137,10 +135,8 @@ namespace BestHTTP.SocketIO.Transports
                                           OnRequestFinished);
 
 
-#if !BESTHTTP_DISABLE_CACHING
             // Don't even try to cache it
-            LastRequest.DisableCache = true;
-#endif
+            LastRequest.Download.DisableCache = true;
 
             if (this.Manager.Options.ServerVersion == SupportedSocketIOVersions.v2)
                 SendV2(packets, LastRequest);
@@ -294,10 +290,8 @@ namespace BestHTTP.SocketIO.Transports
                                         HTTPMethods.Get,
                                         OnPollRequestFinished);
 
-#if !BESTHTTP_DISABLE_CACHING
             // Don't even try to cache it
-            PollRequest.DisableCache = true;
-#endif
+            PollRequest.Download.DisableCache = true;
 
             PollRequest.Retry.MaxRetries = 0;
 
