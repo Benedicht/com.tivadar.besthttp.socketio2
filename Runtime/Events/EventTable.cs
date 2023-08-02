@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-using BestHTTP.Shared.Logger;
-
 namespace BestHTTP.SocketIO.Events
 {
     /// <summary>

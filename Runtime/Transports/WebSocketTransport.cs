@@ -5,8 +5,8 @@ namespace BestHTTP.SocketIO.Transports
 {
     using BestHTTP.HTTP;
     using BestHTTP.HTTP.Connections;
-    using BestHTTP.Shared.Logger;
     using BestHTTP.WebSocket;
+
     using Extensions;
 
     /// <summary>
