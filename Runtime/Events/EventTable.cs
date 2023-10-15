@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO.Events
+using Best.HTTP.Shared;
+
+namespace Best.SocketIO.Events
 {
     /// <summary>
     /// This class helps keep track and maintain EventDescriptor instances and dispatching packets to the right delegates.

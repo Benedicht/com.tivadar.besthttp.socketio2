@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-using UnityEngine;
-using BestHTTP.SocketIO;
-using UnityEngine.UI;
-using BestHTTP.Examples.Helpers;
+using Best.SocketIO.Examples.Helpers;
 
-namespace BestHTTP.Examples
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Best.SocketIO.Examples
 {
-    sealed class SocketIOChatSample : BestHTTP.Examples.Helpers.SampleBase
+    sealed class SocketIOChatSample : Best.SocketIO.Examples.Helpers.SampleBase
     {
         private readonly TimeSpan TYPING_TIMER_LENGTH = TimeSpan.FromMilliseconds(700);
 

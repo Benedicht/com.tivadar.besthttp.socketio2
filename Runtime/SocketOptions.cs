@@ -1,13 +1,13 @@
 using System;
 using System.Text;
 
-using BestHTTP.PlatformSupport.Text;
+using Best.HTTP.Shared.PlatformSupport.Text;
 
 using PlatformSupport.Collections.ObjectModel;
 
 using PlatformSupport.Collections.Specialized;
 
-namespace BestHTTP.SocketIO
+namespace Best.SocketIO
 {
     public delegate void HTTPRequestCallbackDelegate(SocketManager manager, HTTP.HTTPRequest request);
 

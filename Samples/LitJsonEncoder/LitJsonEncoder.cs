@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-using BestHTTP.JSON.LitJson;
+using Best.HTTP.JSON.LitJson;
 
-namespace BestHTTP.SocketIO.JsonEncoders
+namespace Best.SocketIO.JsonEncoders
 {
     /// <summary>
     /// This IJsonEncoder implementation uses the LitJson library located in the Examples\LitJson directory.

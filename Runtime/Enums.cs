@@ -1,4 +1,4 @@
-namespace BestHTTP.SocketIO
+namespace Best.SocketIO
 {
     /// <summary>
     /// Possible event types on the transport level.

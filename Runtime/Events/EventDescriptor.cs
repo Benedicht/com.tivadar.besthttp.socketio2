@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO.Events
+using Best.HTTP.Shared;
+
+namespace Best.SocketIO.Events
 {
     public delegate void SocketIOCallback(Socket socket, Packet packet, params object[] args);
     public delegate void SocketIOAckCallback(Socket socket, Packet packet, params object[] args);

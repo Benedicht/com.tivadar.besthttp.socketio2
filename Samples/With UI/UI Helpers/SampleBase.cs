@@ -1,8 +1,8 @@
-using BestHTTP.Examples.Helpers.SelectorUI;
+using Best.SocketIO.Examples.Helpers.SelectorUI;
 
 using UnityEngine;
 
-namespace BestHTTP.Examples.Helpers
+namespace Best.SocketIO.Examples.Helpers
 {
     abstract class SampleBase : MonoBehaviour
     {

@@ -3,10 +3,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-using BestHTTP.Extensions;
-using BestHTTP.HTTP;
+using Best.HTTP;
+using Best.HTTP.Shared;
+using Best.HTTP.Shared.Extensions;
 
-namespace BestHTTP.SocketIO.Transports
+namespace Best.SocketIO.Transports
 {
     public sealed class PollingTransport : ITransport
     {
@@ -68,9 +69,9 @@ namespace BestHTTP.SocketIO.Transports
                                                 OnRequestFinished);
 
             // Don't even try to cache it
-            request.Download.DisableCache = true;
+            request.DownloadSettings.DisableCache = true;
 
-            request.Retry.MaxRetries = 0;
+            request.RetrySettings.MaxRetries = 0;
 
             if (this.Manager.Options.HTTPRequestCustomizationCallback != null)
                 this.Manager.Options.HTTPRequestCustomizationCallback(this.Manager, request);
@@ -136,7 +137,7 @@ namespace BestHTTP.SocketIO.Transports
 
 
             // Don't even try to cache it
-            LastRequest.Download.DisableCache = true;
+            LastRequest.DownloadSettings.DisableCache = true;
 
             if (this.Manager.Options.ServerVersion == SupportedSocketIOVersions.v2)
                 SendV2(packets, LastRequest);
@@ -182,7 +183,7 @@ namespace BestHTTP.SocketIO.Transports
             }
 
             var str = sendBuilder.ToString();
-            request.Upload.UploadStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(str));
+            request.UploadSettings.UploadStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(str));
             request.SetHeader("Content-Type", "text/plain; charset=UTF-8");
         }
 
@@ -212,7 +213,7 @@ namespace BestHTTP.SocketIO.Transports
             }
 
             request.SetHeader("Content-Type", "application/octet-stream");
-            request.Upload.UploadStream = new MemoryStream(buffer);
+            request.UploadSettings.UploadStream = new MemoryStream(buffer);
         }
 
         private void OnRequestFinished(HTTPRequest req, HTTPResponse resp)
@@ -291,9 +292,9 @@ namespace BestHTTP.SocketIO.Transports
                                         OnPollRequestFinished);
 
             // Don't even try to cache it
-            PollRequest.Download.DisableCache = true;
+            PollRequest.DownloadSettings.DisableCache = true;
 
-            PollRequest.Retry.MaxRetries = 0;
+            PollRequest.RetrySettings.MaxRetries = 0;
 
             if (this.Manager.Options.HTTPRequestCustomizationCallback != null)
                 this.Manager.Options.HTTPRequestCustomizationCallback(this.Manager, PollRequest);

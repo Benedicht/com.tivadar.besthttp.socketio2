@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BestHTTP.Examples.Helpers.SelectorUI
+namespace Best.SocketIO.Examples.Helpers.SelectorUI
 {
     sealed class Category : MonoBehaviour
     {

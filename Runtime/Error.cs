@@ -1,4 +1,4 @@
-namespace BestHTTP.SocketIO
+namespace Best.SocketIO
 {
     public sealed class Error
     {

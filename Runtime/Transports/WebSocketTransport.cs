@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO.Transports
+namespace Best.SocketIO.Transports
 {
-    using BestHTTP.HTTP;
-    using BestHTTP.HTTP.Connections;
-    using BestHTTP.WebSocket;
-
-    using Extensions;
+    using Best.HTTP;
+    using Best.HTTP.Hosts.Connections;
+    using Best.HTTP.Shared;
+    using Best.HTTP.Shared.Extensions;
+    using Best.WebSockets;
 
     /// <summary>
     /// A transport implementation that can communicate with a SocketIO server.

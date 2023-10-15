@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO.JsonEncoders
+namespace Best.SocketIO.JsonEncoders
 {
     /// <summary>
     /// Interface to be able to write custom Json encoders/decoders.

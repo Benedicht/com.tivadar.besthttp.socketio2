@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO
+namespace Best.SocketIO
 {
-    using BestHTTP;
-    using BestHTTP.SocketIO.Events;
+    using Best.HTTP.Shared;
+    using Best.SocketIO.Events;
 
     /// <summary>
     /// This class represents a Socket.IO namespace.
@@ -371,7 +371,7 @@ namespace BestHTTP.SocketIO
                     }
                     else
                     {
-                        var data = JSON.Json.Decode(packet.Payload) as Dictionary<string, object>;
+                        var data = HTTP.JSON.Json.Decode(packet.Payload) as Dictionary<string, object>;
                         this.Id = data["sid"].ToString();
                     }
                     this.IsOpen = true;
@@ -389,7 +389,7 @@ namespace BestHTTP.SocketIO
                 // Create an Error object from the server-sent json string
                 case SocketIOEventTypes.Error:
                     bool success = false;
-                    object result = JSON.Json.Decode(packet.Payload, ref success);
+                    object result = HTTP.JSON.Json.Decode(packet.Payload, ref success);
                     if (success)
                     {
                         var errDict = result as Dictionary<string, object>;

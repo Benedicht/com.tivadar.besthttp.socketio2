@@ -1,6 +1,6 @@
 using System;
 
-namespace BestHTTP.SocketIO.Events
+namespace Best.SocketIO.Events
 {
     /// <summary>
     /// Helper class to provide functions to an easy Enum->string conversation of the transport and SocketIO evenet types.

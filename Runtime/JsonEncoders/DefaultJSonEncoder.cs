@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using BestHTTP.JSON;
+using Best.HTTP.JSON;
 
-namespace BestHTTP.SocketIO.JsonEncoders
+namespace Best.SocketIO.JsonEncoders
 {
     /// <summary>
-    /// The default IJsonEncoder implementation. It's uses the Json class from the BestHTTP.JSON namespace to encode and decode.
+    /// The default IJsonEncoder implementation. It's uses the Json class from the Best.HTTP.JSON namespace to encode and decode.
     /// </summary>
     public sealed class DefaultJSonEncoder : IJsonEncoder
     {

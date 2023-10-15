@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO
+namespace Best.SocketIO
 {
-    using BestHTTP.JSON;
+    using Best.HTTP.JSON;
+    using Best.HTTP.Shared;
 
     /// <summary>
     /// Helper class to parse and hold handshake information.
@@ -52,7 +53,7 @@ namespace BestHTTP.SocketIO
             }
             catch (Exception ex)
             {
-                BestHTTP.HTTPManager.Logger.Exception("HandshakeData", "Parse", ex);
+                HTTPManager.Logger.Exception("HandshakeData", "Parse", ex);
                 return false;
             }
 

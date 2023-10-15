@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BestHTTP.Examples.Helpers
+namespace Best.SocketIO.Examples.Helpers
 {
     static class GUIHelper
     {

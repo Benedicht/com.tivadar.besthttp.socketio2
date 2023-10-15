@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BestHTTP.Examples.Helpers
+namespace Best.SocketIO.Examples.Helpers
 {
     class TextListItem : MonoBehaviour
     {

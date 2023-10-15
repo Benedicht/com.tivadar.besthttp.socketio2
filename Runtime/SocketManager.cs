@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-using BestHTTP.SocketIO.Transports;
-using BestHTTP.Extensions;
-using BestHTTP.SocketIO.JsonEncoders;
-using BestHTTP.SocketIO.Events;
+using Best.HTTP.Shared;
+using Best.HTTP.Shared.Extensions;
+using Best.SocketIO.Events;
+using Best.SocketIO.JsonEncoders;
+using Best.SocketIO.Transports;
 
-namespace BestHTTP.SocketIO
+namespace Best.SocketIO
 {
     public sealed class SocketManager : IHeartbeat, IManager
     {

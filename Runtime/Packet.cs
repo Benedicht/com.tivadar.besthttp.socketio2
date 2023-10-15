@@ -1,10 +1,10 @@
 using System.Text;
 
-namespace BestHTTP.SocketIO
+namespace Best.SocketIO
 {
     using System;
     using System.Collections.Generic;
-    using BestHTTP.JSON;
+    using Best.HTTP.JSON;
 
     public sealed class Packet
     {
@@ -113,7 +113,7 @@ namespace BestHTTP.SocketIO
 
         #region Public Functions
 
-        public object[] Decode(BestHTTP.SocketIO.JsonEncoders.IJsonEncoder encoder)
+        public object[] Decode(Best.SocketIO.JsonEncoders.IJsonEncoder encoder)
         {
             if (IsDecoded || encoder == null)
                 return DecodedArgs;

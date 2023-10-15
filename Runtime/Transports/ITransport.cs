@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO.Transports
+namespace Best.SocketIO.Transports
 {
     public enum TransportTypes
     {

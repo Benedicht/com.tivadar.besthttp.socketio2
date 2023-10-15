@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BestHTTP.SocketIO.JsonEncoders
+namespace Best.SocketIO.JsonEncoders
 {
     using Newtonsoft.Json;
 
