@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Best.SocketIO.Transports
 {
-    using Best.HTTP;
     using Best.HTTP.Hosts.Connections;
     using Best.HTTP.Shared;
     using Best.HTTP.Shared.Extensions;
+    using Best.HTTP.Shared.PlatformSupport.Memory;
     using Best.WebSockets;
 
     /// <summary>
@@ -66,7 +66,6 @@ namespace Best.SocketIO.Transports
             Implementation.OnOpen = OnOpen;
             Implementation.OnMessage = OnMessage;
             Implementation.OnBinary = OnBinary;
-            Implementation.OnError = OnError;
             Implementation.OnClosed = OnClosed;
 
             Implementation.Open();
@@ -163,7 +162,7 @@ namespace Best.SocketIO.Transports
         /// <summary>
         /// WebSocket implementation OnBinary event handler.
         /// </summary>
-        private void OnBinary(WebSocket ws, byte[] data)
+        private void OnBinary(WebSocket ws, BufferSegment buffer)
         {
             if (ws != Implementation)
                 return;
@@ -173,6 +172,9 @@ namespace Best.SocketIO.Transports
 
             if (PacketWithAttachment != null)
             {
+                var data = new byte[buffer.Count];
+                buffer.CopyTo(data);
+                
                 switch(this.Manager.Options.ServerVersion)
                 {
                     case SupportedSocketIOVersions.v2: PacketWithAttachment.AddAttachmentFromServer(data, false); break;
@@ -208,74 +210,31 @@ namespace Best.SocketIO.Transports
         }
 
         /// <summary>
-        /// WebSocket implementation OnError event handler.
-        /// </summary>
-        private void OnError(WebSocket ws, string error)
-        {
-            if (ws != Implementation)
-                return;
-
-#if !UNITY_WEBGL || UNITY_EDITOR
-            if (string.IsNullOrEmpty(error))
-            {
-                switch (ws.InternalRequest.State)
-                {
-                    // The request finished without any problem.
-                    case HTTPRequestStates.Finished:
-                        if (ws.InternalRequest.Response.IsSuccess || ws.InternalRequest.Response.StatusCode == 101)
-                            error = string.Format("Request finished. Status Code: {0} Message: {1}", ws.InternalRequest.Response.StatusCode.ToString(), ws.InternalRequest.Response.Message);
-                        else
-                            error = string.Format("Request Finished Successfully, but the server sent an error. Status Code: {0}-{1} Message: {2}",
-                                                            ws.InternalRequest.Response.StatusCode,
-                                                            ws.InternalRequest.Response.Message,
-                                                            ws.InternalRequest.Response.DataAsText);
-                        break;
-
-                    // The request finished with an unexpected error. The request's Exception property may contain more info about the error.
-                    case HTTPRequestStates.Error:
-                        error = "Request Finished with Error! : " + ws.InternalRequest.Exception != null ? (ws.InternalRequest.Exception.Message + " " + ws.InternalRequest.Exception.StackTrace) : string.Empty;
-                        break;
-
-                    // The request aborted, initiated by the user.
-                    case HTTPRequestStates.Aborted:
-                        error = "Request Aborted!";
-                        break;
-
-                    // Connecting to the server is timed out.
-                    case HTTPRequestStates.ConnectionTimedOut:
-                        error = "Connection Timed Out!";
-                        break;
-
-                    // The request didn't finished in the given time.
-                    case HTTPRequestStates.TimedOut:
-                        error = "Processing the request Timed Out!";
-                        break;
-                }
-            }
-#endif
-
-            if (Manager.UpgradingTransport != this)
-                (Manager as IManager).OnTransportError(this, error);
-            else
-                Manager.UpgradingTransport = null;
-        }
-
-        /// <summary>
         /// WebSocket implementation OnClosed event handler.
         /// </summary>
-        private void OnClosed(WebSocket ws, ushort code, string message)
+        private void OnClosed(WebSocket ws, WebSocketStatusCodes code, string message)
         {
             if (ws != Implementation)
               return;
 
-            HTTPManager.Logger.Information("WebSocketTransport", "OnClosed");
+            HTTPManager.Logger.Information("WebSocketTransport", $"OnClosed({code}, {message})");
 
-            Close();
+            if (code == WebSocketStatusCodes.NormalClosure)
+            {
+                Close();
 
-            if (Manager.UpgradingTransport != this)
-                (Manager as IManager).TryToReconnect();
+                if (Manager.UpgradingTransport != this)
+                    (Manager as IManager).TryToReconnect();
+                else
+                    Manager.UpgradingTransport = null;
+            }
             else
-                Manager.UpgradingTransport = null;
+            {
+                if (Manager.UpgradingTransport != this)
+                    (Manager as IManager).OnTransportError(this, message);
+                else
+                    Manager.UpgradingTransport = null;
+            }
         }
 
 #endregion
