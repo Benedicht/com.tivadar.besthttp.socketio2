@@ -1,3 +1,4 @@
+#if BESTHTTP_SOCKETIO_ENABLE_NEWTONSOFT_JSON_DOTNET_ENCODER
 using System;
 using System.Collections.Generic;
 
@@ -21,3 +22,4 @@ namespace Best.SocketIO.JsonEncoders
         }
     }
 }
+#endif

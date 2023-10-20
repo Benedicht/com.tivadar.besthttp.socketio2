@@ -12,6 +12,10 @@
     "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [{
+            "name": "com.unity.nuget.newtonsoft-json",
+            "expression": "1.0.0",
+            "define": "BESTHTTP_SOCKETIO_ENABLE_NEWTONSOFT_JSON_DOTNET_ENCODER"
+        }],
     "noEngineReferences": false
 }
