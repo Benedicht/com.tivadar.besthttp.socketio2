@@ -21,7 +21,11 @@ namespace Best.SocketIO.Examples.Helpers
 
         protected virtual void Start()
         {
+#if UNITY_2023_1_OR_NEWER
             this.sampleSelector = FindAnyObjectByType<SampleSelectorUI>();
+#else
+            this.sampleSelector = FindObjectOfType<SampleSelectorUI>();
+#endif
         }
     }
 }
