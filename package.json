@@ -1,12 +1,12 @@
 {
-  "name": "com.tivadar.besthttp.socketio2",
+  "name": "com.tivadar.best.socketio2",
   "displayName": "Best Socket.IO (deprecated)",
   "description": "Connect to old Socket.IO v1 or v2 servers.",
   "version": "3.0.0",
-  "unity": "2019.4",
-  "documentationUrl": "https://benedicht.github.io/BestHTTP-Documentation/pages/best_http2/introduction.html",
-  "changelogUrl": "https://benedicht.github.io/BestHTTP-Documentation/pages/best_http2/changelog.html",
-  "licensesUrl": "https://benedicht.github.io/BestHTTP-Documentation/pages/best_http2/ThirdPartyNotices.html",
+  "unity": "2021.1",
+  "documentationUrl": "https://bestdocshub.pages.dev/HTTP/",
+  "changelogUrl": "https://bestdocshub.pages.dev/HTTP/changelog/",
+  "licensesUrl": "https://bestdocshub.pages.dev/HTTP/third-party-notices/",
   "author": {
     "name": "Tivadar György Nagy",
     "email": "besthttp@gmail.com",
